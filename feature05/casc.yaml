@@ -1,0 +1,43 @@
+
+# Using the configuration as code plugin 
+## https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md
+jenkins:
+  # Give access only when user is authenticated
+  ## https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/demos/global-matrix-auth/README.md
+  authorizationStrategy: 
+    projectMatrix:
+      permissions:
+        - "View/Delete:authenticated"
+        - "View/Read:authenticated"
+        - "View/Configure:authenticated"
+        - "View/Create:authenticated"
+        - "Job/Read:authenticated"
+        - "Job/Build:authenticated"
+        - "Job/Configure:authenticated"
+        - "Job/Create:authenticated"
+        - "Job/Delete:authenticated"
+        - "Job/Discover:authenticated"
+        - "Job/Move:authenticated"
+        - "Job/Workspace:authenticated"
+        - "Job/Cancel:authenticated"
+        - "Run/Delete:authenticated"
+        - "Run/Replay:authenticated"
+        - "Run/Update:authenticated"
+        - "SCM/Tag:authenticated"
+        - "Overall/Administer:authenticated" 
+        # - "Overall/Read:anonymous"
+  # Create a default Jenkins User and Password, JENKINS_ADMIN_USR and JENKINS_ADMIN_PASS are set in the Dockerfile
+  securityRealm:
+    local:
+      allowsSignup: false # Stops anonymous users from creating users from the web UI 
+      users:
+       - id: ${JENKINS_ADMIN_USR}
+         password: ${JENKINS_ADMIN_PASS} 
+      # You can also create more users by adding more IDs and Passwords to this chunk
+      #  - id: ${user1}
+      #    password: ${user1-pass}
+      
+# This sets the location of your jenkins URL
+unclassified:
+  location:
+    url: http://localhost:81/ # If you are running on a different port, change this url and rebuild the Dockerfile
