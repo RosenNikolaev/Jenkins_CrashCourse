@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    tools {
+    maven "Maven 3.8.6"
+    jdk "Jdk 9.0.4"
+    }
+    stages {
+        stage("Test version") {
+            steps {
+                sh 'mvn -v' 
+            }
+        }
+    }
+
+}
