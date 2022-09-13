@@ -11,6 +11,7 @@
 <img src ='Image2.png'>
 <br>
 - The Jenkisfile using the JDK and maven version specified in the above steps looks like the following
+
 ```
 pipeline {
     agent any
@@ -27,6 +28,7 @@ pipeline {
     }
 }
 ```
+
 `Note that the names defined in the first steps are the same with the names in the quotes `
 # Workspace Cleanup
 ## Containers 
