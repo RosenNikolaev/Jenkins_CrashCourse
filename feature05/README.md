@@ -6,7 +6,8 @@
       ```
       H/5 * * * *
       ```
-# Building with a particular mvn and java version 
+# Building with a particular mvn and java version using tools 
+`Can be used for maven jdk and gradle `
 - Go to http://jenkins_url/configureTools/ and search for JDK installation 
   Select your jdk version to be automatically installed, or pick a custom installation method
 <br>
