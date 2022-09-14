@@ -15,10 +15,9 @@ COPY ./plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 
 # Make sure the /var/jenkins_home/ folder exists 
-RUN mkdir -p /var/jenkins_home/
+RUN mkdir -p /var/tmp/
 # Copy the configuration in casc.yml to the Jenkins host
-COPY ./casc.yaml /var/jenkins_home/casc.yaml
-
+COPY ./casc.yaml /var/tmp/casc.yaml
 # Set jenkins config path
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
 
