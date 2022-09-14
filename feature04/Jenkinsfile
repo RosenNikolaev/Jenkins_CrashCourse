@@ -6,8 +6,7 @@ pipeline {
                 sh "pwd"
                 sh "ls -la"
                 sh "whoami"
-                sh "chmod +x mvnw"
-                sh "./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.8.0:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/blubito/ehorses:latest -DskipTests"
+                sh "mvn -v" 
             }
         }
     }
