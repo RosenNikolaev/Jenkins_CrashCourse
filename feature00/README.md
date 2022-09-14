@@ -5,20 +5,16 @@ Docker Container
 
 <br>
 <img src="./image1.jpg" />
-<br>
 
-[Salsa](https://docs.docker.com/storage/volumes/)
-
+[Source](https://docs.docker.com/storage/volumes/)
+---
 Docker Volumes and Bind mounts 
-
 ---
 <br>
 <img src="./image2.png" />
-<br>
 
+[Source](https://jfrog.com/knowledge-base/a-beginners-guide-to-understanding-and-building-docker-images/)
 ---
-
-[Salsa](https://jfrog.com/knowledge-base/a-beginners-guide-to-understanding-and-building-docker-images/)
 
 # Workspace Cleanup
 ## Containers 
