@@ -6,7 +6,6 @@ pipeline {
                 sh "pwd"
                 sh "ls -la"
                 sh "whoami"
-                sh "chmod +x mvnw"
                 sh "mvn -v" 
             }
         }
