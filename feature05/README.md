@@ -1,3 +1,11 @@
+#  SCM 
+- Configure checkout and Pipeline script from SCM
+[![Nana Docker](https://img.youtube.com/vi/CmwTPxdx24Y/0.jpg)](https://www.youtube.com/watch?v=CmwTPxdx24Y&t=401s)
+- SCM Polling 
+  -  Polls every five minutes  
+      ```
+      H/5 * * * *
+      ```
 # Building with a particular mvn and java version 
 - Go to http://jenkins_url/configureTools/ and search for JDK installation 
   Select your jdk version to be automatically installed, or pick a custom installation method
@@ -14,22 +22,52 @@
 
 ```
 pipeline {
-    agent any
-    tools {
-    maven "Maven 3.8.6"
-    jdk "Jdk 9.0.4"
-    }
-    stages {
-        stage("Test version") {
-            steps {
-                sh 'mvn -v' 
-            }
-        }
-    }
+  agent any
+  tools {
+  maven "Maven 3.8.6"
+  jdk "Jdk 9.0.4"
+  }
+  stages {
+      stage("Test version") {
+          steps {
+              sh 'mvn -v' 
+          }
+      }
+  }
 }
 ```
-
 `Note that the names defined in the first steps are the same with the names in the quotes `
+
+# Post-Build Actions
+- Commands that can be run always, only when the pipeline succeeds, or when it fails.
+
+```
+pipeline {
+  agent any
+  tools {
+  maven "Maven 3.8.6"
+  jdk "Jdk 9.0.4"
+  }
+  stages {
+      stage("Test version") {
+          steps {
+              sh 'mvn -v' 
+          }
+      }
+  }
+  post {
+    failure {
+      echo 'I will print only on failure'
+    }
+    success {
+      echo 'I will print only on success'
+    }
+    always {
+      echo ‘I will always execute this’
+    }
+  }
+}
+```
 # Workspace Cleanup
 ## Containers 
 - [ ] You can take a look at all running containers using ```docker ps``` 

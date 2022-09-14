@@ -1,15 +1,25 @@
 pipeline {
-    agent any
-    tools {
-    maven "Maven 3.8.6"
-    jdk "Jdk 9.0.4"
-    }
-    stages {
-        stage("Test version") {
-            steps {
-                sh 'mvn -v' 
-            }
-        }
-    }
-
+  agent any
+  tools {
+  maven "Maven 3.8.6"
+  jdk "Jdk 9.0.4"
+  }
+  stages {
+      stage("Test version") {
+          steps {
+              sh 'mvn -v' 
+          }
+      }
+  }
+//   post {
+//     failure {
+//       echo 'I will print only on failure'
+//     }
+//     success {
+//       echo 'I will print only on success'
+//     }
+//     always {
+//       echo ‘I will always execute this’
+//     }
+//   }
 }
