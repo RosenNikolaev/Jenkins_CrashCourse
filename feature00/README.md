@@ -23,7 +23,7 @@ Docker Volumes and Bind mounts
   - Underlying system
   - Docker
 - Executors
-  - \# of parallel executors
+  - \# of parallel pipelines that can run at the same time
 - Projects
   - Build Triggers
   - Build Scripts (Jenkinsfiles)
