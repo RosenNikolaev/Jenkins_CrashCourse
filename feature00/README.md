@@ -1,7 +1,4 @@
 # What is Docker
-Dockerfiles -> 
-Docker Images -> 
-Docker Container 
 
 <br>
 <img src="./image1.jpg" />
