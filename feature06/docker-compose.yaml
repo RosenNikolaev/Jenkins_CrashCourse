@@ -1,6 +1,8 @@
 services:
   react-app:
-    image: android2e/react-app:latest  #repository/image-name:tag 
+    image: android2e/react-app:latest  #repository/image-name:tag
+    # If you want to build the image from a Dockerfile and not use an image that is in dockerhub or present locally 
+    # build: ./react-app/ 
     environment: # ENV variables inside of the container 
       - IAM_ENV_VARIABLE=value 
     ports: # host:container
