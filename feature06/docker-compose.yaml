@@ -1,0 +1,38 @@
+services:
+  react-app:
+    image: android2e/react-app:latest  #repository/image-name:tag 
+    environment: # ENV variables inside of the container 
+      - IAM_ENV_VARIABLE=value 
+    ports: # host:container
+      - 81:3000 
+    depends_on: # Which containers need to be running before this container starts 
+      - postgresql 
+      - elasticsearch 
+    networks:
+      - network-one
+
+  postgresql:
+    image: postgres:latest
+    environment: # ENV variables inside of the container 
+      - POSTGRES_USER=user 
+      - POSTGRES_PASSWORD=password 
+    # ports:
+    #   - 8888:5432
+    networks:
+      - network-one
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    # ports:
+    #   - 8015:9200
+    #   - 8016:9300
+    environment:
+      - 'ES_JAVA_OPTS=-Xms1024m -Xmx1024m'
+      - 'discovery.type=single-node'
+    # networks:
+    #   - network-one
+
+# Network definition
+networks:
+  network-one:
+   name: network-one-net
