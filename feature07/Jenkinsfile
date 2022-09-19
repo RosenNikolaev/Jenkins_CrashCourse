@@ -10,21 +10,24 @@ pipeline {
         }
     }
   post {
-    agent Built-In Node
-    
     always {
-      echo '----------------------'
-      echo 'CONTAINERS'
-      echo '----------------------'
-      sh 'docker ps'
-      echo '----------------------'
-      echo 'IMAGES'
-      echo '----------------------'
-      sh 'docker image ls'
-      echo '----------------------'
-      echo 'VOLUMES'
-      echo '----------------------'
-      sh 'docker volume ls'
+      node ('Built-In Node'){
+        steps{
+          echo '----------------------'
+          echo 'CONTAINERS'
+          echo '----------------------'
+          sh 'docker ps'
+          echo '----------------------'
+          echo 'IMAGES'
+          echo '----------------------'
+          sh 'docker image ls'
+          echo '----------------------'
+          echo 'VOLUMES'
+          echo '----------------------'
+          sh 'docker volume ls'
+        }
+      }
+
     }
   }
 }
