@@ -22,7 +22,7 @@ pipeline {
     }
   post {
     always {
-      node ('built-int'){
+      node ('built-in'){
         sh 'docker ps'
         sh 'docker image ls'
         sh 'docker volume ls'
