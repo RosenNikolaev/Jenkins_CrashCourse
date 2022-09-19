@@ -1,18 +1,10 @@
 pipeline {
     agent none 
     stages {
-        stage('Custom Dockerfile') {
-            agent {
-                dockerfile true 
-            }
-            steps {
-              echo $MY_ENV
-            }
-        }
         stage ('Custom Dockerfile name'){
             agent {
               dockerfile {
-                filename 'Dockerfile.custom'
+                filename '/feature07/feature07-1/Dockerfile.custom'
               }
             }
             steps{ 
