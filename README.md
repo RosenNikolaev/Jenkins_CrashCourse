@@ -1,6 +1,7 @@
 # Intro to Jenkins 
 ## Prerequisites 
 -  Have [docker](https://docs.docker.com/engine/install/) installed on your system
+- Have [docker-compose](https://docs.docker.com/compose/install/) installed on your system 
 ## Contents 
 - Introduction ([feature00](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature00))
 - Base Jenkins image deployment ([feature01](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature01))
