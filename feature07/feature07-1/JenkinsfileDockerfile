@@ -1,0 +1,39 @@
+pipeline {
+    agent none 
+    stages {
+        stage('Custom Dockerfile') {
+            agent {
+                dockerfile true 
+            }
+            steps {
+              echo $MY_ENV
+            }
+        }
+        stage ('Custom Dockerfile name'){
+            agent {
+              dockerfile {
+                filename 'Dockerfile.custom'
+              }
+            }
+            steps{ 
+              echo $MY_ENV
+            }
+        }
+    }
+  post {
+    always {
+      echo '----------------------'
+      echo 'CONTAINERS'
+      echo '----------------------'
+      sh 'docker ps'
+      echo '----------------------'
+      echo 'IMAGES'
+      echo '----------------------'
+      sh 'docker image ls'
+      echo '----------------------'
+      echo 'VOLUMES'
+      echo '----------------------'
+      sh 'docker volume ls'
+    }
+  }
+}
