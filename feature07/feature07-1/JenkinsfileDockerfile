@@ -3,14 +3,13 @@ node {
         checkout scm
     }
     stage ('Build a custom named Dockerfile ') {
-        def dockerfile = 'Dockerfile.custom'
+        def dockerfile = 'DockerfileCustom'
         // def testImage = docker.build("test-image", "-f ${dockerfile} ./feature07/feature07-1/") 
         def customImage = docker.build("my-image:${env.BUILD_ID}",
-                                "-f ${dockerfile}","./feature07/feature07-1") 
+                                "-f ${dockerfile} ./feature07/feature07-1") 
         customImage.inside {
             sh 'echo $MY_ENV'
         }
     }
-
 }
 
