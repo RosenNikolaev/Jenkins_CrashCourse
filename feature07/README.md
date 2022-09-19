@@ -67,7 +67,7 @@ pipeline {
     stages {
         stage('BE') {
             agent {
-                docker {image 'maven:3.8.6-openjdk-18'}
+                docker {image 'maven:latest'}
             }
             steps {
                 sh 'mvn --version'
