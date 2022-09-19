@@ -8,7 +8,8 @@
 - Extended Dockerfile Jenkins deployment  ([feature03](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature03)) 
 - Simple Jenkinsfile overview  ([feature04](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature04)) 
 - Extended Jenkinsfile  ([feature05](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature05))
-- Overview and what's next  ([feature06](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature06))
+- Docker Networks and Docker-Compose  ([feature06](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature06))
+- Jenkins docker in docker configuration and the docker-workflow plugin ([feature07](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature07))
 
 
 # Additional Resources 
