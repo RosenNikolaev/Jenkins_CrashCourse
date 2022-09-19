@@ -1,0 +1,8 @@
+node {
+    checkout scm
+    def testImage = docker.build("test-image", "./feature07/feature07-01/Dockerfile.custom") 
+
+    testImage.inside {
+        sh 'echo $MY_ENV'
+    }
+}
