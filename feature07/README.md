@@ -91,30 +91,23 @@ You can specify different agents for each of the different stages inside of each
 You can also specify a custom Dockerfile, see [feature07-01](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature07/feature07-1)
 
 ```
-pipeline {
-    agent none 
-    stages {
-        stage('Custom Dockerfile') {
-            agent {
-                dockerfile true 
-            }
-            steps {
-               ...
-            }
-        }
-        stage('Custom Dockerfile name'){
-            agent {
-                dockerfile {
-                    filename 'DifferentDockerFilename'
-                }
-            }
-            steps {
-                ...
-            }
+node {
+    stage ('Checkout') {
+        checkout scm
+    }
+
+    stage ('Build a Dockerfile located inside of /feature07/feature07-1/') {
+        def testImage = docker.build("test-image", " ./feature07/feature07-1/") 
+        # Execute commands inside of the container 
+        testImage.inside {
+            sh 'echo $MY_ENV'
         }
     }
+
 }
+
 ```
+`Note that it can only be done using the scripted pipeline syntax`
 ## Additional Resources
 - [Docker as agent](https://www.jenkins.io/doc/book/pipeline/docker/) 
    - Scripted usage
