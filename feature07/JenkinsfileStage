@@ -1,0 +1,37 @@
+pipeline {
+    agent none 
+    stages {
+        stage('BE') {
+            agent {
+                docker {image 'maven:3.8.6-openjdk-18'}
+            }
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('FE'){
+            agent { 
+                docker {image 'node:16.13.1-alpine'}
+            }
+            steps{
+                sh 'node --version'
+            }
+        }
+    }
+  post {
+    always {
+      echo '----------------------'
+      echo 'CONTAINERS'
+      echo '----------------------'
+      sh 'docker ps'
+      echo '----------------------'
+      echo 'IMAGES'
+      echo '----------------------'
+      sh 'docker image ls'
+      echo '----------------------'
+      echo 'VOLUMES'
+      echo '----------------------'
+      sh 'docker volume ls'
+    }
+  }
+}
