@@ -1,25 +1,14 @@
-pipeline {
-    agent none 
-    stages {
-        stage ('Custom Dockerfile name'){
-            agent {
-              dockerfile {
-                filename '/feature07/feature07-1/Dockerfile.custom'
-              }
-            }
-            steps{ 
-              echo $MY_ENV
-            }
+node {
+    stage ('Checkout') {
+        checkout scm
+    }
+    stage ('Build a custom named Dockerfile ') {
+        def dockerfile = 'Dockerfile.custom'
+        def testImage = docker.build("test-image", "-f ${dockerfile} ./feature07/feature07-1/") 
+        testImage.inside {
+            sh 'echo $MY_ENV'
         }
     }
-  post {
-    always {
-      node ('built-in'){
-        sh 'docker ps'
-        sh 'docker image ls'
-        sh 'docker volume ls'
-      }
 
-    }
-  }
 }
+
