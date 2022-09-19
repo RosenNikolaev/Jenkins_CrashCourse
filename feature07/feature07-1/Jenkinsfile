@@ -1,9 +1,13 @@
 node {
-    checkout scm
-    def testImage = docker.build("test-image", "./feature07/feature07-1/") 
-
-    testImage.inside {
-        sh 'echo $MY_ENV'
+    stage ('Checkout') {
+        checkout scm
     }
+    stage ('Build a custom named Dockerfile ') {
+        def testImage = docker.build("test-image", "-f Dockerfile.custom ./feature07/feature07-1/") 
+        testImage.inside {
+            sh 'echo $MY_ENV'
+        }
+    }
+
 }
 
