@@ -22,18 +22,12 @@ pipeline {
     }
   post {
     always {
-      echo '----------------------'
-      echo 'CONTAINERS'
-      echo '----------------------'
-      sh 'docker ps'
-      echo '----------------------'
-      echo 'IMAGES'
-      echo '----------------------'
-      sh 'docker image ls'
-      echo '----------------------'
-      echo 'VOLUMES'
-      echo '----------------------'
-      sh 'docker volume ls'
+      node ('built-int'){
+        sh 'docker ps'
+        sh 'docker image ls'
+        sh 'docker volume ls'
+      }
+
     }
   }
 }
