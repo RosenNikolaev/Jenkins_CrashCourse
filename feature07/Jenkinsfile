@@ -10,6 +10,8 @@ pipeline {
         }
     }
   post {
+    agent Built-In Node
+    
     always {
       echo '----------------------'
       echo 'CONTAINERS'
