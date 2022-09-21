@@ -1,0 +1,33 @@
+pipeline {
+    agent any 
+    environment {
+        REGISTRY_CREDS = credentials("rnikolaev@blubito.com");
+        HEADHASH = "${GIT_COMMIT.substring(0, 6)}"
+    } 
+
+    stages {
+        stage('Check Environment') {
+            steps {
+                sh 'ls -la '
+                sh 'pwd'
+                sh 'whoami'
+            }
+        }
+        stage('Build') {
+            steps{
+                sh 'cd '
+                sh "chmod +x mvnw"
+                sh "./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/blubito/dunningtolb:latest -Djib.to.tags=$HEADHASH -DskipTests"
+            }
+    }
+  post {
+    always {
+      node ('built-in'){
+        sh 'docker ps'
+        sh 'docker image ls'
+        sh 'docker volume ls'
+      }
+
+    }
+  }
+}
