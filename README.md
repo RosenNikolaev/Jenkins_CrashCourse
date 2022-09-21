@@ -11,6 +11,7 @@
 - Extended Jenkinsfile  ([feature05](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature05))
 - Docker Networks and Docker-Compose  ([feature06](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature06))
 - Jenkins docker in docker configuration and the docker-workflow plugin ([feature07](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature07))
+- How to build a jhipster application using Jenkins ([feature08](https://github.com/RosenNikolaev/Jenkins_CrashCourse/tree/master/feature08))
 
 
 # Additional Resources 
