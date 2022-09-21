@@ -23,7 +23,7 @@
 - Simplifies the creation of containers with attached networks, volumes, names ... 
 - Enables the creation of more than one container with a single command ```docker-compose up``` 
 
-Insead of running ```docker run -d -p 81:8080 -v jenkins-volume:/var/jenkins_home jenkins/jenkins``` for each and every container, all of the commands can be defined in a single yaml file.
+Insead of running ```docker run -d -p 81:8080 -v jenkins-volume:/var/jenkins_home jenkins/jenkins jenkins/jenkins:latest ``` for each and every container, all of the commands can be defined in a single yaml file.
 ```
 version: '3.8'
 # Docker containers
