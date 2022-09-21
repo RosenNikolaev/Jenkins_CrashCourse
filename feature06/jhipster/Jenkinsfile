@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        REGISTRY_CREDS = credentials("rnikolaev@blubito.com");
+        REGISTRY_CREDS = credentials("rnikolaev-dockerhub");
         HEADHASH = "${GIT_COMMIT.substring(0, 6)}"
     } 
     stages {
