@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Check Environment') {
             steps {
-                sh "ls -la ./feature06/jhipster/ && pwd"
+                sh "ls -la ./feature08/jhipster/ && pwd"
                 sh "whoami"
             }
         }
