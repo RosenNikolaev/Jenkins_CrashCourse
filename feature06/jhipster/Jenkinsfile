@@ -4,7 +4,6 @@ pipeline {
         REGISTRY_CREDS = credentials("rnikolaev@blubito.com");
         HEADHASH = "${GIT_COMMIT.substring(0, 6)}"
     } 
-
     stages {
         stage('Check Environment') {
             steps {
@@ -15,9 +14,9 @@ pipeline {
         }
         stage('Build') {
             steps{
-                sh 'cd '
+                sh 'cd ./feature06/jhipster/'
                 sh "chmod +x mvnw"
-                sh "./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/blubito/dunningtolb:latest -Djib.to.tags=$HEADHASH -DskipTests"
+                sh "./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/android2e/jhipster:latest -Djib.to.tags=$HEADHASH -DskipTests"
             }
     }
   post {
