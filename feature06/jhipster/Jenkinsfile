@@ -18,6 +18,7 @@ pipeline {
                 sh "chmod +x mvnw"
                 sh "./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/android2e/jhipster:latest -Djib.to.tags=$HEADHASH -DskipTests"
             }
+        }
     }
   post {
     always {
@@ -29,4 +30,5 @@ pipeline {
 
     }
   }
+
 }
