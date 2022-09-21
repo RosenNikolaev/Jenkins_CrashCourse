@@ -6,17 +6,15 @@ pipeline {
     stages {
         stage('Check Environment') {
             steps {
-                sh 'ls -la '
-                sh 'pwd'
-                sh 'whoami'
+                sh "ls -la ./feature06/jhipster/ && pwd"
+                sh "whoami"
             }
         }
         stage('Build') {
             steps{
               withCredentials([usernamePassword(credentialsId: 'rnikolaev-dockerhub', usernameVariable: 'REGISTRY_CREDS_USR', passwordVariable: 'REGISTRY_CREDS_PSW')]) {
-                sh "ls -la ./feature06/jhipster/"
-                sh "chmod +x ./feature06/jhipster/mvnw"
-                sh "cd ./feature06/jhipster/ && ./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/android2e/jhipster:latest -Djib.to.tags=$HEADHASH -DskipTests"
+                sh "chmod +x ./feature08/jhipster/mvnw"
+                sh "cd ./feature08/jhipster/ && ./mvnw -Pprod clean package jib:build -Djib.to.auth.username=$REGISTRY_CREDS_USR -Djib.to.auth.password=$REGISTRY_CREDS_PSW -Dimage=registry.hub.docker.com/android2e/jhipster:latest -Djib.to.tags=$HEADHASH -DskipTests"
               }
             } 
         }
